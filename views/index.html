@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <title>FioVital-Monitor</title>
 </head>
 <body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+                <img src="../public/images/image.png">
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Monitor</a></li>
+                    <li class="nav-item"><a href="cuidado.html" class="nav-link">Cuidados</a></li>
+                    <li class="nav-item"><a href="cadastro.html" class="nav-user"><i class="fa-solid fa-circle-user"></i></a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="monitor-container">
+    <h1>Pacientes</h1>
+
+    <div class="btn-container">
+        <button class="btn-adicionar" onclick="window.location.href='adicionar_paciente.html'">
+          <span>+</span> Adicionar Paciente
+        </button>
+    </div>
+
+    <div class="pacientes-lista">
+        <a href="paciente.html" class="paciente-card ok">
+            <h2>Em Melhora</h2>
+            <h3>João Silva</h3>
+        </a>
+
+        <a href="paciente.html" class="paciente-card alerta">
+            <h2>Cuidado</h2>
+            <h3>Marileine Rodrigues</h3>
+        </a>
+
+        <a href="paciente.html" class="paciente-card critico">
+            <h2>Emergência</h2>
+            <h3>Roberto Souza</h3>
+        </a>
+    </div>
     
+    </div>
+
+    <footer></footer>
 </body>
 </html>
