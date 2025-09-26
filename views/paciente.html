@@ -26,82 +26,47 @@
     
     <div class="container">
         <main class="dashboard" role="main">
-            <!-- Lista de Pacientes -->
-            <section class="card pacientes-list" aria-labelledby="pacientes-title">
-                <h2 id="pacientes-title">Lista de Pacientes</h2>
-                
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-pacientes" placeholder="Buscar paciente..." aria-label="Buscar paciente">
-                </div>
-                
-                <div class="pacientes-container">
-                    <div class="paciente-item active" data-paciente-id="1">
-                        <div class="paciente-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="paciente-info">
-                            <h3>Maria Silva</h3>
-                            <p>65 anos • Hipertensão</p>
-                            <div class="paciente-status normal">
-                                <i class="fas fa-heart"></i>
-                                <span>72 BPM</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Maria Silva">Ver</button>
-                    </div>
-                    
-                    <div class="paciente-item" data-paciente-id="2">
-                        <div class="paciente-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="paciente-info">
-                            <h3>João Santos</h3>
-                            <p>58 anos • Arritmia</p>
-                            <div class="paciente-status warning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>88 BPM</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de João Santos">Ver</button>
-                    </div>
-                    
-                    <div class="paciente-item" data-paciente-id="3">
-                        <div class="paciente-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="paciente-info">
-                            <h3>Ana Oliveira</h3>
-                            <p>72 anos • Diabetes</p>
-                            <div class="paciente-status normal">
-                                <i class="fas fa-heart"></i>
-                                <span>68 BPM</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Ana Oliveira">Ver</button>
-                    </div>
-                    
-                    <div class="paciente-item" data-paciente-id="4">
-                        <div class="paciente-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="paciente-info">
-                            <h3>Carlos Mendes</h3>
-                            <p>45 anos • Pós-operatório</p>
-                            <div class="paciente-status danger">
-                                <i class="fas fa-heartbeat"></i>
-                                <span>102 BPM</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Carlos Mendes">Ver</button>
-                    </div>
-                </div>
-                
-                <button class="btn btn-block" id="add-paciente">
-                    <i class="fas fa-plus"></i> Adicionar Novo Paciente
-                </button>
-            </section>
-            
+            <!-- Orientações Médicas -->
+<section class="card medical-guidelines" aria-labelledby="guidelines-title">
+    <h2 id="guidelines-title">
+        <i class="fas fa-bell"></i> Orientações Médicas 
+        <span class="badge">3</span>
+    </h2>
+
+    <!-- Lembrete de Medicamento -->
+    <div class="guideline-item">
+        <h3>Lembrete de Medicamento</h3>
+        <p>Hora de tomar Losartana 50mg. Tome com água, preferencialmente pela manhã.</p>
+        <p class="info"><i class="fas fa-clock"></i> Agora • <span class="doctor">Dr. João Santos</span></p>
+        <div class="actions">
+            <button class="btn btn-success">Tomei</button>
+            <button class="btn btn-secondary">+15min</button>
+        </div>
+    </div>
+
+    <!-- Consulta Agendada -->
+    <div class="guideline-item">
+        <h3>Consulta Agendada</h3>
+        <p>Consulta de acompanhamento marcada para amanhã às 14:00. Lembre-se de levar seus exames.</p>
+        <p class="info"><i class="fas fa-clock"></i> há 2 horas • <span class="doctor">Dr. João Santos</span></p>
+        <div class="actions">
+            <button class="btn btn-success">Confirmar</button>
+            <button class="btn btn-danger">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Instrução Especial -->
+    <div class="guideline-item">
+        <h3>Instrução Especial</h3>
+        <p>Seus batimentos estão um pouco elevados. Evite esforços físicos intensos hoje e mantenha-se hidratado.</p>
+        <p class="info"><i class="fas fa-clock"></i> há 4 horas • <span class="doctor">Dr. João Santos</span></p>
+        <div class="actions">
+            <button class="btn btn-success">Confirmar</button>
+            <button class="btn btn-danger">Apagar</button>
+        </div>
+    </div>
+</section>
+
             <!-- Detalhes do Paciente Selecionado -->
             <section class="card paciente-detail" aria-labelledby="paciente-detail-title">
                 <h2 id="paciente-detail-title">Detalhes do Paciente</h2>

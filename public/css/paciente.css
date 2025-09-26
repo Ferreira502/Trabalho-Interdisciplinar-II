@@ -173,130 +173,62 @@ main {
 }
 
 /* Lista de Pacientes */
-.pacientes-list {
-    grid-column: 1;
-    grid-row: 1;
+.medical-guidelines {
+    padding: 1rem;
+    background: #fff8e7;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.search-bar {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.search-bar i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--secondary-color);
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 12px 15px 12px 45px;
-    border: 1px solid var(--gray-color);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.search-bar input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
-}
-
-.pacientes-container {
-    max-height: 500px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
-
-.paciente-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 10px;
-    background: var(--light-color);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    cursor: pointer;
-    border-left: 4px solid transparent;
-}
-
-.paciente-item:hover {
-    background: #e9f0f8;
-    transform: translateX(5px);
-}
-
-.paciente-item.active {
-    background: linear-gradient(135deg, #e9f0f8 0%, #dbe7f6 100%);
-    border-left-color: var(--primary-color);
-}
-
-.paciente-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: var(--white-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
+.medical-guidelines h2 {
     font-size: 1.2rem;
-    flex-shrink: 0;
-}
-
-.paciente-avatar.large {
-    width: 80px;
-    height: 80px;
-    font-size: 2rem;
-}
-
-.paciente-info {
-    flex-grow: 1;
-}
-
-.paciente-info h3 {
-    margin-bottom: 5px;
-    color: var(--dark-color);
-    font-size: 1.1rem;
-}
-
-.paciente-info p {
-    color: var(--secondary-color);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-}
-
-.paciente-status {
-    display: inline-flex;
+    margin-bottom: 1rem;
+    display: flex;
     align-items: center;
-    padding: 4px 10px;
-    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.badge {
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.3rem 0.6rem;
     font-size: 0.8rem;
-    font-weight: 600;
 }
 
-.paciente-status.normal {
-    background: rgba(40, 167, 69, 0.2);
-    color: var(--success-color);
+.guideline-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #ccc;
 }
 
-.paciente-status.warning {
-    background: rgba(255, 193, 7, 0.2);
-    color: var(--warning-color);
+.guideline-item:nth-child(2) { border-left-color: #28a745; }
+.guideline-item:nth-child(3) { border-left-color: #007bff; }
+.guideline-item:nth-child(4) { border-left-color: #ffc107; }
+
+.guideline-item h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
 }
 
-.paciente-status.danger {
-    background: rgba(220, 53, 69, 0.2);
-    color: var(--danger-color);
+.guideline-item p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
 }
 
-.paciente-status i {
-    margin-right: 5px;
-    font-size: 0.7rem;
+.guideline-item .info {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.actions {
+    margin-top: 0.5rem;
+}
+
+.actions .btn {
+    margin-right: 0.5rem;
 }
 
 /* Detalhes do Paciente */

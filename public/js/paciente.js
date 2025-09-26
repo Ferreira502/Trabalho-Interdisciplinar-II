@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Elementos DOM
     const elements = {
         // Lista de pacientes
         searchPacientes: document.getElementById('search-pacientes'),
         pacientesContainer: document.querySelector('.pacientes-container'),
         addPacienteBtn: document.getElementById('add-paciente'),
-        
+
         // Detalhes do paciente
         pacienteNome: document.getElementById('paciente-nome'),
         pacienteInfo: document.getElementById('paciente-info'),
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alertsContainer: document.getElementById('alerts-container'),
         editPacienteBtn: document.getElementById('edit-paciente'),
         emergencyPacienteBtn: document.getElementById('emergency-paciente'),
-        
+
         // Modais
         emergencyModal: document.getElementById('emergency-modal'),
         emergencyPacienteNome: document.getElementById('emergency-paciente-nome'),
@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
         countdown: document.getElementById('countdown'),
         cancelEmergency: document.getElementById('cancel-emergency'),
         confirmEmergency: document.getElementById('confirm-emergency'),
-        
+
         addPacienteModal: document.getElementById('add-paciente-modal'),
         pacienteForm: document.getElementById('paciente-form'),
         cancelAddPaciente: document.getElementById('cancel-add-paciente'),
         savePaciente: document.getElementById('save-paciente'),
-        
+
         // Footer
         connectionStatus: document.getElementById('connection-status'),
         lastUpdate: document.getElementById('last-update')
@@ -208,9 +208,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const item = document.createElement('div');
         item.className = `paciente-item ${state.pacienteSelecionado?.id === paciente.id ? 'active' : ''}`;
         item.setAttribute('data-paciente-id', paciente.id);
-        
-        const statusIcon = paciente.status === 'normal' ? 'fa-heart' : 
-                          paciente.status === 'warning' ? 'fa-exclamation-triangle' : 'fa-heartbeat';
+
+        const statusIcon = paciente.status === 'normal' ? 'fa-heart' :
+            paciente.status === 'warning' ? 'fa-exclamation-triangle' : 'fa-heartbeat';
 
         item.innerHTML = `
             <div class="paciente-avatar">
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Informações básicas
         elements.pacienteNome.textContent = paciente.nome;
         elements.pacienteInfo.textContent = `${paciente.idade} anos • ${paciente.condicao} • ID: ${paciente.codigo}`;
-        
+
         // Atualizar informações de contato
         const contatoElement = document.querySelector('.paciente-contato');
         contatoElement.innerHTML = `
@@ -290,14 +290,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateChart(paciente) {
         const ctx = elements.heartRateChart.getContext('2d');
-        
+
         // Destruir gráfico anterior se existir
         if (state.chart) {
             state.chart.destroy();
         }
 
         const labels = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
-        
+
         const config = {
             type: 'line',
             data: {
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         padding: 12,
                         displayColors: false,
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.parsed.y + ' BPM';
                             }
                         }
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         suggestedMin: 50,
                         suggestedMax: 120,
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return value + ' BPM';
                             }
                         },
@@ -380,10 +380,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function createAlertElement(alerta) {
         const alertItem = document.createElement('div');
         alertItem.className = `alert-item ${alerta.tipo}`;
-        
+
         const iconClass = alerta.tipo === 'normal' ? 'fa-check-circle' :
-                         alerta.tipo === 'warning' ? 'fa-exclamation-triangle' :
-                         alerta.tipo === 'danger' ? 'fa-heartbeat' : 'fa-info-circle';
+            alerta.tipo === 'warning' ? 'fa-exclamation-triangle' :
+                alerta.tipo === 'danger' ? 'fa-heartbeat' : 'fa-info-circle';
 
         alertItem.innerHTML = `
             <div class="alert-icon" aria-hidden="true">
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Atualizar condições
         const conditionsList = document.querySelector('.conditions-list');
-        conditionsList.innerHTML = paciente.condicoes.map(condicao => 
+        conditionsList.innerHTML = paciente.condicoes.map(condicao =>
             `<li>${condicao}</li>`
         ).join('');
 
@@ -427,34 +427,34 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupEventListeners() {
         // Busca de pacientes
         elements.searchPacientes.addEventListener('input', filtrarPacientes);
-        
+
         // Botão adicionar paciente
         elements.addPacienteBtn.addEventListener('click', showAddPacienteModal);
-        
+
         // Ações do paciente
         elements.editPacienteBtn.addEventListener('click', editarPaciente);
         elements.emergencyPacienteBtn.addEventListener('click', handleEmergencyClick);
-        
+
         // Modal de emergência
         elements.cancelEmergency.addEventListener('click', cancelEmergency);
         elements.confirmEmergency.addEventListener('click', confirmEmergency);
-        
+
         // Modal adicionar paciente
         elements.cancelAddPaciente.addEventListener('click', hideAddPacienteModal);
         elements.savePaciente.addEventListener('click', salvarPaciente);
-        
+
         // Teclado para acessibilidade
         document.addEventListener('keydown', handleKeyPress);
     }
 
     function filtrarPacientes() {
         const termo = elements.searchPacientes.value.toLowerCase();
-        
+
         state.pacientes.forEach(paciente => {
             const elemento = document.querySelector(`[data-paciente-id="${paciente.id}"]`);
             if (elemento) {
                 const corresponde = paciente.nome.toLowerCase().includes(termo) ||
-                                  paciente.condicao.toLowerCase().includes(termo);
+                    paciente.condicao.toLowerCase().includes(termo);
                 elemento.style.display = corresponde ? 'flex' : 'none';
             }
         });
@@ -516,39 +516,39 @@ document.addEventListener('DOMContentLoaded', function() {
         state.pacientes.push(novoPaciente);
         renderPacientesList();
         hideAddPacienteModal();
-        
+
         showNotification('success', 'Paciente Adicionado', `${nome} foi adicionado com sucesso.`);
     }
 
     function editarPaciente() {
         if (!state.pacienteSelecionado) return;
-        
+
         showNotification('info', 'Editar Paciente', `Editando informações de ${state.pacienteSelecionado.nome}`);
         // Aqui iria a lógica para abrir modal de edição
     }
 
     function handleEmergencyClick() {
         if (!state.pacienteSelecionado || state.isEmergencyActive) return;
-        
+
         elements.emergencyModal.classList.add('show');
         elements.emergencyModal.setAttribute('aria-hidden', 'false');
-        
+
         startEmergencyCountdown();
     }
 
     function startEmergencyCountdown() {
         let countdown = 10;
         elements.countdown.textContent = countdown;
-        
+
         state.emergencyCountdown = setInterval(() => {
             countdown--;
             elements.countdown.textContent = countdown;
-            
+
             if (countdown <= 0) {
                 confirmEmergency();
             }
         }, 1000);
-        
+
         state.isEmergencyActive = true;
     }
 
@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.emergencyModal.classList.remove('show');
         elements.emergencyModal.setAttribute('aria-hidden', 'true');
         state.isEmergencyActive = false;
-        
+
         if (state.pacienteSelecionado) {
             addAlert(state.pacienteSelecionado.id, 'info', 'Emergência Cancelada', 'Chamada de emergência cancelada pelo usuário');
         }
@@ -568,18 +568,18 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.emergencyModal.classList.remove('show');
         elements.emergencyModal.setAttribute('aria-hidden', 'true');
         state.isEmergencyActive = false;
-        
+
         if (state.pacienteSelecionado) {
             simulateEmergencyCall(state.pacienteSelecionado);
-            addAlert(state.pacienteSelecionado.id, 'danger', 'Emergência Acionada', 
+            addAlert(state.pacienteSelecionado.id, 'danger', 'Emergência Acionada',
                 `Serviço de emergência notificado - ${state.pacienteSelecionado.bpmAtual} BPM`);
         }
     }
 
     function simulateEmergencyCall(paciente) {
         console.log(`EMERGÊNCIA: Acionando serviço médico para ${paciente.nome}. Frequência: ${paciente.bpmAtual} BPM`);
-        
-        showNotification('danger', 'Emergência Acionada', 
+
+        showNotification('danger', 'Emergência Acionada',
             `Serviço médico notificado para ${paciente.nome}. Localização e dados enviados.`);
     }
 
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         paciente.alertas.unshift(alerta);
-        
+
         // Manter apenas os últimos 10 alertas
         if (paciente.alertas.length > 10) {
             paciente.alertas.pop();
@@ -614,58 +614,58 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Variação aleatória de BPM (-3 a +3)
                 const variacao = Math.floor(Math.random() * 7) - 3;
                 paciente.bpmAtual = Math.max(40, Math.min(140, paciente.bpmAtual + variacao));
-                
+
                 // Atualizar status baseado no BPM
                 if (paciente.bpmAtual >= 60 && paciente.bpmAtual <= 80) {
                     paciente.status = 'normal';
-                } else if ((paciente.bpmAtual > 80 && paciente.bpmAtual <= 95) || 
-                          (paciente.bpmAtual >= 50 && paciente.bpmAtual < 60)) {
+                } else if ((paciente.bpmAtual > 80 && paciente.bpmAtual <= 95) ||
+                    (paciente.bpmAtual >= 50 && paciente.bpmAtual < 60)) {
                     paciente.status = 'warning';
-                    
+
                     // Chance de gerar alerta
                     if (Math.random() > 0.8) {
-                        addAlert(paciente.id, 'warning', 'Frequência Alterada', 
+                        addAlert(paciente.id, 'warning', 'Frequência Alterada',
                             `${getCurrentTime()} - ${paciente.bpmAtual} BPM detectados`);
                     }
                 } else {
                     paciente.status = 'danger';
-                    
+
                     // Sempre gerar alerta crítico
-                    addAlert(paciente.id, 'danger', 'Frequência Crítica', 
+                    addAlert(paciente.id, 'danger', 'Frequência Crítica',
                         `${getCurrentTime()} - ${paciente.bpmAtual} BPM detectados`);
                 }
-                
+
                 // Atualizar bateria (-1% a 0%)
                 paciente.bateria = Math.max(0, paciente.bateria - Math.floor(Math.random() * 2));
-                
+
                 // Adicionar ao histórico (mantendo apenas últimos 6 valores)
                 paciente.historicoBpm.push(paciente.bpmAtual);
                 if (paciente.historicoBpm.length > 6) {
                     paciente.historicoBpm.shift();
                 }
-                
+
                 // Recalcular média
                 paciente.bpmMedio = Math.round(paciente.historicoBpm.reduce((a, b) => a + b) / paciente.historicoBpm.length);
             });
-            
+
             // Atualizar interface se necessário
             if (state.pacienteSelecionado) {
                 updatePacienteDetails(state.pacienteSelecionado);
             }
-            
+
             // Atualizar lista de pacientes
             renderPacientesList();
-            
+
         }, 10000); // Atualizar a cada 10 segundos
 
         // Atualizar status da conexão
         setInterval(updateConnectionStatus, 30000);
-        
+
         // Atualizar hora da última atualização
         setInterval(() => {
-            elements.lastUpdate.textContent = `Última atualização: ${new Date().toLocaleTimeString('pt-BR', { 
-                hour: '2-digit', 
-                minute: '2-digit' 
+            elements.lastUpdate.textContent = `Última atualização: ${new Date().toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit'
             })}`;
         }, 60000);
     }
@@ -673,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateConnectionStatus() {
         // Simular status de conexão (95% de chance de estar online)
         state.connectionOnline = Math.random() > 0.05;
-        
+
         if (state.connectionOnline) {
             elements.connectionStatus.innerHTML = '<i class="fas fa-circle"></i> Sistema Online';
             elements.connectionStatus.className = 'status-online';
@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.className = `notification ${tipo}`;
         notification.setAttribute('role', 'status');
         notification.setAttribute('aria-live', 'polite');
-        
+
         notification.innerHTML = `
             <div class="notification-content">
                 <h4>${titulo}</h4>
@@ -699,16 +699,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 <i class="fas fa-times" aria-hidden="true"></i>
             </button>
         `;
-        
+
         document.body.appendChild(notification);
-        
+
         // Fechar notificação após 5 segundos
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.remove();
             }
         }, 5000);
-        
+
         // Botão fechar
         notification.querySelector('.close-notification').addEventListener('click', () => {
             notification.remove();
@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleKeyPress(event) {
         // Atalhos de teclado para acessibilidade
         if (event.altKey) {
-            switch(event.key) {
+            switch (event.key) {
                 case 'a':
                     event.preventDefault();
                     elements.addPacienteBtn.focus();
@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
         }
-        
+
         // ESC fecha modais
         if (event.key === 'Escape') {
             if (state.isEmergencyActive) {
