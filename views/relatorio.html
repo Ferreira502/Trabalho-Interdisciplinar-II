@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fio Vital - Relatórios</title>
+  <link rel="stylesheet" href="../public/css/relatorio.css">
+</head>
+<body class="gc-body">
+  <!-- Header -->
+  <header class="gc-header">
+    <div class="gc-logo">
+      <img src="/logo.png" alt="Logo" class="gc-logo-img">
+      <p>Fio Vital</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="alertas.html">Alertas</a></li>
+        <li class="gc-active">Relatórios</li>
+        <li><a href="pacientes.html">Paciente</a></li>
+      </ul>
+    </nav>
+    <div class="gc-user">
+      <img src="/user-icon.png" alt="Usuário">
+      <p>Dr. João Santos</p>
+      <button class="gc-btn-logout" onclick="logout()">Sair</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo -->
+  <main class="gc-main">
+    <h1 class="gc-title">Centro de Relatórios</h1>
+    <p class="gc-subtitle">Análises detalhadas e insights dos dados de seus pacientes</p>
+
+    <!-- Filtros -->
+    <div class="gc-filtros">
+      <div>
+        <label for="gc-tipo-relatorio">Tipo de Relatório</label>
+        <select id="gc-tipo-relatorio">
+          <option>Visão Geral</option>
+          <option>Relatório Diário</option>
+          <option>Relatório Semanal</option>
+          <option>Relatório Mensal</option>
+          <option>Alertas Críticos</option>
+        </select>
+      </div>
+      <div>
+        <label for="gc-periodo">Período</label>
+        <select id="gc-periodo">
+          <option>Hoje</option>
+          <option>Últimos 7 dias</option>
+          <option>Este mês</option>
+          <option>Trimestre</option>
+          <option>Personalizado</option>
+        </select>
+      </div>
+      <div>
+        <label for="gc-paciente">Paciente</label>
+        <select id="gc-paciente">
+          <option>Todos os Pacientes</option>
+          <option>Maria Silva</option>
+          <option>Carlos Oliveira</option>
+          <option>Ana Costa</option>
+          <option>Roberto Lima</option>
+        </select>
+      </div>
+      <div>
+        <label for="gc-data-inicial">Data Inicial</label>
+        <input type="date" id="gc-data-inicial" value="2024-03-01">
+      </div>
+      <div>
+        <label for="gc-data-final">Data Final</label>
+        <input type="date" id="gc-data-final">
+      </div>
+      <div>
+        <button class="gc-btn-gerar" onclick="gerarRelatorio()">📊 Gerar Relatório</button>
+      </div>
+    </div>
+
+    <!-- Relatórios Rápidos -->
+    <section class="gc-relatorios-rapidos">
+      <div class="gc-card" onclick="selecionarRelatorioRapido('diario')">
+        <h3>📅 Relatório Diário</h3>
+        <p>Resumo completo das atividades e alertas de hoje</p>
+      </div>
+      <div class="gc-card" onclick="selecionarRelatorioRapido('semanal')">
+        <h3>📊 Relatório Semanal</h3>
+        <p>Análise de tendências e padrões da semana</p>
+      </div>
+      <div class="gc-card" onclick="selecionarRelatorioRapido('mensal')">
+        <h3>📆 Relatório Mensal</h3>
+        <p>Visão estratégica do mês completo</p>
+      </div>
+      <div class="gc-card" onclick="selecionarRelatorioRapido('alertas')">
+        <h3>🚨 Alertas Críticos</h3>
+        <p>Análise dos alertas críticos recentes</p>
+      </div>
+    </section>
+
+    <!-- Gráfico -->
+    <section class="gc-grafico">
+      <div class="gc-grafico-header">
+        <h3 class="gc-grafico-title" id="gc-titulo-grafico">Frequência Cardíaca - Últimos 7 Dias</h3>
+        <span class="gc-grafico-periodo" id="gc-periodo-grafico">Período: Semana Atual</span>
+      </div>
+      <div class="gc-grafico-area" id="gc-area-grafico">
+        📈 Gráfico será exibido após gerar relatório
+      </div>
+    </section>
+
+    <!-- Métricas e Preocupações -->
+    <div class="gc-metricas-preocupacoes">
+      <section class="gc-section">
+        <h3>Métricas Principais</h3>
+        <ul id="gc-metricas-principais">
+          <li>Pacientes Monitorados: <span>12</span></li>
+          <li>Média BPM Geral: <span>78 BPM</span></li>
+          <li>Alertas Críticos: <span>3</span></li>
+        </ul>
+      </section>
+      <section class="gc-section">
+        <h3>Principais Preocupações</h3>
+        <ul id="gc-preocupacoes">
+          <li>Maria Silva — 125 BPM</li>
+          <li>Roberto Lima — 45 BPM</li>
+          <li>Ana Costa — Irregularidade</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gc-footer">
+      <button onclick="exportarPDF()">📄 PDF</button>
+      <button onclick="exportarExcel()">📊 Excel</button>
+      <button onclick="exportarCSV()">📁 CSV</button>
+      <button onclick="enviarEmail()">📧 Email</button>
+      <button onclick="imprimirRelatorio()">🖨️ Imprimir</button>
+    </footer>
+  </main>
+
+  <script src="../public/datas/relatorio.js"></script>
+</body>
+</html>

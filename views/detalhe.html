@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/detalhe.css">
+    <title>Maria Silva - Detalhes do Paciente - Fio Vital</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Fio Vital</div>
+            <a href="#" class="back-btn" onclick="goBack()">
+                ← Voltar ao Dashboard
+            </a>
+            <div class="user-info">
+                <div class="user-avatar">👨‍⚕️</div>
+                <div>
+                    <div style="font-weight: 600;">Dr. João Santos</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Cardiologista</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="main-content">
+            <!-- Patient Header -->
+            <div class="patient-header">
+                <div class="patient-avatar">👤</div>
+                <div class="patient-basic-info">
+                    <h1 class="patient-name-title">Maria Silva</h1>
+                    <div class="patient-id-status">
+                        <span class="patient-id">ID: #FV001</span>
+                        <div class="status-indicator critical">
+                            <span class="status-dot"></span>
+                            CRÍTICO - Online
+                        </div>
+                    </div>
+                    <div class="patient-basic-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Idade</span>
+                            <span>68 anos</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Gênero</span>
+                            <span>Feminino</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tipo Sanguíneo</span>
+                            <span>O+</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Telefone</span>
+                            <span>(11) 99999-9999</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contato de Emergência</span>
+                            <span>João Silva (Filho)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Cadastro</span>
+                            <span>15/01/2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Vital Signs Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Sinais Vitais em Tempo Real</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="vital-signs-grid">
+                            <div class="vital-item">
+                                <div class="vital-value critical">125</div>
+                                <div class="vital-label">BPM Atual</div>
+                            </div>
+                            <div class="vital-item">
+                                <div class="vital-value warning">↗</div>
+                                <div class="vital-label">Tendência</div>
+                            </div>
+                            <div class="vital-item">
+                                <div class="vital-value normal">30s</div>
+                                <div class="vital-label">Última Medição</div>
+                            </div>
+                            <div class="vital-item">
+                                <div class="vital-value critical">Alto</div>
+                                <div class="vital-label">Nível de Risco</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <span>📍</span>
+                        <span class="card-title">Localização Atual</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="location-info">
+                            <div class="address">Rua das Flores, 123 - Centro</div>
+                            <div class="coordinates">
+                                Lat: -23.5505, Long: -46.6333<br>
+                                Última atualização: há 1 minuto
+                            </div>
+                        </div>
+                        <div class="mini-map">
+                            <!-- <div class="map-marker">📍</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Width Cards -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <span>🚨</span>
+                    <span class="card-title">Alertas Recentes</span>
+                </div>
+                <div class="card-content">
+                    <div class="alerts-list">
+                        <div class="alert-item critical">
+                            <div class="alert-time">há 2 minutos</div>
+                            <div class="alert-message">Frequência cardíaca elevada detectada - 125 BPM</div>
+                        </div>
+                        <div class="alert-item warning">
+                            <div class="alert-time">há 15 minutos</div>
+                            <div class="alert-message">Tendência de aumento na frequência cardíaca</div>
+                        </div>
+                        <div class="alert-item critical">
+                            <div class="alert-time">há 1 hora</div>
+                            <div class="alert-message">Dispositivo desconectado por 5 minutos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>📊</span>
+                    <span class="card-title">Histórico de Medições</span>
+                </div>
+                <div class="card-content">
+                    <div class="history-item">
+                        <span>Hoje, 14:30</span>
+                        <span class="history-value critical">125 BPM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Hoje, 14:00</span>
+                        <span class="history-value warning">118 BPM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Hoje, 13:30</span>
+                        <span class="history-value warning">115 BPM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Hoje, 13:00</span>
+                        <span class="history-value normal">89 BPM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Hoje, 12:30</span>
+                        <span class="history-value normal">82 BPM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Sidebar -->
+        <div class="communication-card">
+            <div class="card-header">
+                <span>📱</span>
+                <span class="card-title">Ações de Comunicação</span>
+            </div>
+            <div class="card-content">
+                <div class="action-buttons">
+                    <button class="action-btn notification" onclick="sendNotification()">
+                        <span class="action-icon">🔔</span>
+                        <div class="action-details">
+                            <div class="action-title">Enviar Notificação</div>
+                            <div class="action-desc">Enviar alerta personalizado</div>
+                        </div>
+                    </button>
+
+                    <a href="tel:+5511999999999" class="action-btn call">
+                        <span class="action-icon">📞</span>
+                        <div class="action-details">
+                            <div class="action-title">Ligar para Paciente</div>
+                            <div class="action-desc">(11) 99999-9999</div>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/5511999999999?text=Olá Maria, sou o Dr. João Santos. Como você está se sentindo?" target="_blank" class="action-btn whatsapp">
+                        <span class="action-icon">💬</span>
+                        <div class="action-details">
+                            <div class="action-title">WhatsApp</div>
+                            <div class="action-desc">Mensagem rápida</div>
+                        </div>
+                    </a>
+
+                    <button class="action-btn emergency" onclick="callEmergency()">
+                        <span class="action-icon">🚨</span>
+                        <div class="action-details">
+                            <div class="action-title">Emergência</div>
+                            <div class="action-desc">Acionar SAMU</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Patient Status Summary -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #fee2e2; border-radius: 10px;">
+                <h3 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Status Crítico</h3>
+                <ul style="color: #dc2626; font-size: 0.9rem; line-height: 1.5;">
+                    <li>FC acima de 120 BPM</li>
+                    <li>Tendência crescente</li>
+                    <li>Requer atenção médica</li>
+                </ul>
+            </div>
+
+            <!-- Quick Actions -->
+            <div style="margin-top: 2rem;">
+                <h3 style="color: #333; margin-bottom: 1rem; font-size: 1rem;">⚡ Ações Rápidas</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                    <button style="padding: 0.8rem; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;" onclick="addNote()">
+                        📝 Nota
+                    </button>
+                    <button style="padding: 0.8rem; background: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;" onclick="scheduleVisit()">
+                        🗓️ Agendar
+                    </button>
+                    <button style="padding: 0.8rem; background: #f59e0b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;" onclick="prescribeMed()">
+                        💊 Receitar
+                    </button>
+                    <button style="padding: 0.8rem; background: #8b5cf6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem;" onclick="shareData()">
+                        📊 Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Popup -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+    <div class="notification-popup" id="notificationPopup">
+        <div class="popup-header">
+            <h3>📱 Enviar Notificação</h3>
+            <button class="popup-close" onclick="closePopup()">×</button>
+        </div>
+        <div class="popup-form">
+            <label>Mensagem:</label>
+            <textarea class="popup-textarea" placeholder="Digite sua mensagem para Maria Silva..." id="notificationMessage"></textarea>
+            <div style="display: flex; gap: 1rem;">
+                <label><input type="checkbox" checked> SMS</label>
+                <label><input type="checkbox" checked> Push</label>
+                <label><input type="checkbox"> Email</label>
+            </div>
+            <div class="popup-buttons">
+                <button class="popup-btn secondary" onclick="closePopup()">Cancelar</button>
+                <button class="popup-btn primary" onclick="confirmSendNotification()">Enviar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../public/js/detalhe.js"></script>
+</body>
+</html>

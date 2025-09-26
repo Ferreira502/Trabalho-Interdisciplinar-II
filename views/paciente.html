@@ -1,31 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes</title>
+    <title>Fio Vital - Monitoramento de Pacientes</title>
     <link rel="stylesheet" href="../public/css/paciente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="../public/images/Logo_minimalista.png" type="image/x-icon">
 </head>
 <body>
-        <header>
-        <nav class="nav-bar">
-            <div class="logo">
-                <img src="../public/images/image.png">
-            </div>
-            <div class="nav-list">
-                <ul>
-                    <li class="nav-item"><a href="index.html" class="nav-link">Monitor</a></li>
-                    <li class="nav-item"><a href="cuidado.html" class="nav-link">Cuidados</a></li>
-                    <li class="nav-item"><a href="cadastro.html" class="nav-link"><i class="fa-solid fa-circle-user"></i></a></li>
-                </ul>
-            </div>
 
-        </nav>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">Fio Vital</div>
+            <div class="user-info">
+                <div class="user-avatar">👨‍⚕️</div>
+                <div>
+                    <div style="font-weight: 600;">Dr. João Santos</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Cardiologista</div>
+                    <button class="logout" onclick="logout()">Sair</button>
+                </div>
+            </div>
+        </div>
     </header>
-
-
-    <div></div>
-    <footer></footer>
     
+    <div class="container">
+        <main class="dashboard" role="main">
+            <!-- Lista de Pacientes -->
+            <section class="card pacientes-list" aria-labelledby="pacientes-title">
+                <h2 id="pacientes-title">Lista de Pacientes</h2>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-pacientes" placeholder="Buscar paciente..." aria-label="Buscar paciente">
+                </div>
+                
+                <div class="pacientes-container">
+                    <div class="paciente-item active" data-paciente-id="1">
+                        <div class="paciente-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="paciente-info">
+                            <h3>Maria Silva</h3>
+                            <p>65 anos • Hipertensão</p>
+                            <div class="paciente-status normal">
+                                <i class="fas fa-heart"></i>
+                                <span>72 BPM</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Maria Silva">Ver</button>
+                    </div>
+                    
+                    <div class="paciente-item" data-paciente-id="2">
+                        <div class="paciente-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="paciente-info">
+                            <h3>João Santos</h3>
+                            <p>58 anos • Arritmia</p>
+                            <div class="paciente-status warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>88 BPM</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de João Santos">Ver</button>
+                    </div>
+                    
+                    <div class="paciente-item" data-paciente-id="3">
+                        <div class="paciente-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="paciente-info">
+                            <h3>Ana Oliveira</h3>
+                            <p>72 anos • Diabetes</p>
+                            <div class="paciente-status normal">
+                                <i class="fas fa-heart"></i>
+                                <span>68 BPM</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Ana Oliveira">Ver</button>
+                    </div>
+                    
+                    <div class="paciente-item" data-paciente-id="4">
+                        <div class="paciente-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="paciente-info">
+                            <h3>Carlos Mendes</h3>
+                            <p>45 anos • Pós-operatório</p>
+                            <div class="paciente-status danger">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>102 BPM</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-small view-paciente" aria-label="Ver detalhes de Carlos Mendes">Ver</button>
+                    </div>
+                </div>
+                
+                <button class="btn btn-block" id="add-paciente">
+                    <i class="fas fa-plus"></i> Adicionar Novo Paciente
+                </button>
+            </section>
+            
+            <!-- Detalhes do Paciente Selecionado -->
+            <section class="card paciente-detail" aria-labelledby="paciente-detail-title">
+                <h2 id="paciente-detail-title">Detalhes do Paciente</h2>
+                
+                <div class="paciente-header">
+                    <div class="paciente-main-info">
+                        <div class="paciente-avatar large">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h3 id="paciente-nome">Maria Silva</h3>
+                            <p id="paciente-info">65 anos • Hipertensão • ID: P-001</p>
+                            <div class="paciente-contato">
+                                <span><i class="fas fa-phone"></i> (11) 99999-9999</span>
+                                <span><i class="fas fa-map-marker-alt"></i> São Paulo, SP</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="paciente-actions">
+                        <button class="btn btn-small" id="edit-paciente">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-small btn-danger" id="emergency-paciente">
+                            <i class="fas fa-ambulance"></i> Emergência
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="paciente-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="current-bpm">72</span>
+                            <span class="stat-label">BPM Atual</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="avg-bpm">68</span>
+                            <span class="stat-label">Média Diária</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-battery-three-quarters"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="battery-level">85%</span>
+                            <span class="stat-label">Bateria</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="heart-rate-chart">
+                    <h3>Monitoramento Cardíaco - Últimas 24h</h3>
+                    <div class="chart-container">
+                        <canvas id="heartRateChart" aria-label="Gráfico de monitoramento cardíaco do paciente" role="img"></canvas>
+                    </div>
+                </div>
+                
+                <div class="paciente-alerts">
+                    <h3>Alertas Recentes</h3>
+                    <div class="alerts-list" id="alerts-container">
+                        <div class="alert-item normal">
+                            <div class="alert-icon" aria-hidden="true">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Batimentos Normalizados</h4>
+                                <p>15:30 - Frequência cardíaca retornou ao normal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Informações Médicas -->
+            <section class="card medical-info" aria-labelledby="medical-info-title">
+                <h2 id="medical-info-title">Informações Médicas</h2>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-pills"></i> Medicações</h3>
+                    <div class="medication-list">
+                        <div class="medication-item">
+                            <span class="med-name">Captopril</span>
+                            <span class="med-dosage">25mg</span>
+                            <span class="med-schedule">8h • 14h • 20h</span>
+                        </div>
+                        <div class="medication-item">
+                            <span class="med-name">AAS</span>
+                            <span class="med-dosage">100mg</span>
+                            <span class="med-schedule">8h</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-stethoscope"></i> Condições</h3>
+                    <ul class="conditions-list">
+                        <li>Hipertensão Arterial</li>
+                        <li>Dislipidemia</li>
+                        <li>Obesidade Grau I</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3><i class="fas fa-calendar-check"></i> Próxima Consulta</h3>
+                    <div class="appointment-info">
+                        <p><strong>Dr. Carlos Ferreira</strong></p>
+                        <p>15/12/2023 às 14:30</p>
+                        <p>Cardiologia - Hospital São Lucas</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer role="contentinfo">
+            <p>Fio Vital &copy; 2023 - Monitoramento Cardíaco 24/7</p>
+            <div class="footer-info">
+                <span id="connection-status" class="status-online">
+                    <i class="fas fa-circle"></i> Sistema Online
+                </span>
+                <span id="last-update">Última atualização: 16:45</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Modal de Emergência -->
+    <div id="emergency-modal" class="modal" role="dialog" aria-labelledby="emergency-modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <h3 id="emergency-modal-title"><i class="fas fa-ambulance"></i> EMERGÊNCIA MÉDICA</h3>
+            <p>Paciente: <span id="emergency-paciente-nome">Maria Silva</span></p>
+            <p>Frequência cardíaca: <span id="emergency-bpm">72</span> BPM</p>
+            <p>Serviço de emergência será acionado em <span id="countdown">10</span> segundos.</p>
+            <div class="modal-actions">
+                <button id="cancel-emergency" class="btn btn-secondary">Cancelar</button>
+                <button id="confirm-emergency" class="btn btn-danger">Confirmar Emergência</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Adicionar Paciente -->
+    <div id="add-paciente-modal" class="modal" role="dialog" aria-labelledby="add-paciente-title" aria-hidden="true">
+        <div class="modal-content">
+            <h3 id="add-paciente-title"><i class="fas fa-user-plus"></i> Adicionar Novo Paciente</h3>
+            <form id="paciente-form">
+                <div class="form-group">
+                    <label for="paciente-nome-input">Nome Completo</label>
+                    <input type="text" id="paciente-nome-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="paciente-idade">Idade</label>
+                    <input type="number" id="paciente-idade" min="1" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label for="paciente-condicao">Condição Principal</label>
+                    <input type="text" id="paciente-condicao" required>
+                </div>
+                <div class="form-group">
+                    <label for="paciente-telefone">Telefone</label>
+                    <input type="tel" id="paciente-telefone" required>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button id="cancel-add-paciente" class="btn btn-secondary">Cancelar</button>
+                <button id="save-paciente" class="btn">Salvar Paciente</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../public/js/paciente.js"></script>
 </body>
 </html>

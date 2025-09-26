@@ -1,243 +1,211 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #008080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #760B20;
 }
 
-.container 
-{
-    width: 80%;
-    height: 80vh;
-    display: flex;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-    background: #fff;
+/* Container principal */
+.container-login {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+  max-width: 900px;
+  width: 100%;
 }
 
-.form-image 
-{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #E8D0A9;
-    padding: 1rem;
+/* Painel esquerdo */
+.painel-esquerdo {
+  flex: 1;
+  background: linear-gradient(to right, #DC143D, #760B20);
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.form-image img 
-{
-    width: 31rem;
+.painel-esquerdo h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.form 
-{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    padding: 3rem;
+.painel-esquerdo h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
 
-.form-header 
-{
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.painel-esquerdo p {
+  margin-bottom: 30px;
+  line-height: 1.4;
 }
 
-.login-button 
-{
-    display: flex;
-    align-items: center;
+.lista-recursos li {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
 }
 
-.login-button button 
-{
-    border: none;
-    background-color: #008080;
-    padding: 0.4rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+.lista-recursos li::before {
+  content: "✔";
+  margin-right: 10px;
+  color: #fff;
 }
 
-.login-button button:hover 
-{
-    background-color: #008B8B;
+/* Painel direito */
+.painel-direito {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.login-button button a {
-    text-decoration: none;
-    font-weight: 500;
-    color: #fff;
+.painel-direito h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 
-.form-header h1::after 
-{
-    content: '';
-    display: block;
-    width: 5rem;
-    height: 0.3rem;
-    background-color: #008080;
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
+.painel-direito p {
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.input-group 
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
+.seletor-perfil {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.input-box 
-{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
+.perfil {
+  flex: 1;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.input-box input 
-{
-    margin: 0.6rem 0;
-    padding: 0.8rem 1.2rem;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 1px 1px 6px #0000001c;
-    font-size: 0.8rem;
+.perfil.ativo {
+  border-color: #760B20;
+  background: #f18ea2;
 }
 
-.input-box input:hover 
-{
-    background-color: #eeeeee75;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.input-box input:focus-visible 
-{
-    outline: 1px solid #008080;
+form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-.input-box label,
-.gender-title h6 
-{
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #000000c0;
+.campo-senha {
+  position: relative;
 }
 
-.input-box input::placeholder 
-{
-    color: #000000be;
+.campo-senha input {
+  width: 100%;
 }
 
-.gender-group 
-{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
+#mostrar-senha {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
-.gender-input 
-{
-    display: flex;
-    align-items: center;
+.caixa-selecao {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #333;
 }
 
-.gender-input input 
-{
-    margin-right: 0.35rem;
+.link-esqueci {
+  font-size: 0.9rem;
+  text-align: right;
+  color: #4a00e0;
+  text-decoration: none;
 }
 
-.gender-input label 
-{
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #000000c0;
+.botao {
+  background: linear-gradient(to right, #DC143D, #760B20);
+  text-decoration: none;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.continue-button button 
-{
-    width: 100%;
-    margin-top: 2.5rem;
-    border: none;
-    background-color: #008080;
-    padding: 0.62rem;
-    border-radius: 5px;
-    cursor: pointer;
+.botao-secundario {
+  background: #eee;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.continue-button button:hover 
-{
-    background-color: #008B8B;
+.link-cadastro {
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.continue-button button a 
-{
-    text-decoration: none;
-    font-size: 0.93rem;
-    font-weight: 500;
-    color: #fff;
+.link-cadastro a {
+  color: #4a00e0;
+  text-decoration: none;
 }
 
-/* Responsividade */
-@media screen and (max-width: 1330px) 
-{
-    .form-image {
-        display: none;
-    }
-    .container {
-        width: 50%;
-    }
-    .form {
-        width: 100%;
-    }
+.separador {
+  text-align: center;
+  margin: 20px 0 10px;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-@media screen and (max-width: 1064px) 
-{
-    .container 
-    {
-        width: 90%;
-        height: auto;
-    }
-    .input-group 
-    {
-        flex-direction: column;
-        z-index: 5;
-        padding-right: 5rem;
-        max-height: 10rem;
-        overflow-y: scroll;
-        flex-wrap: nowrap;
-    }
-    .gender-inputs 
-    {
-        margin-top: 2rem;
-    }
-    .gender-group 
-    {
-        flex-direction: column;
-    }
-    .gender-title h6 
-    {
-        margin: 0;
-    }
-    .gender-input 
-    {
-        margin-top: 0.5rem;
-    }
+.botoes-sociais {
+  display: flex;
+  gap: 15px;
+}
+
+.social {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.google {
+  background: white;
+}
+
+.microsoft {
+  background: white;
+}
+
+.seguranca {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
 }

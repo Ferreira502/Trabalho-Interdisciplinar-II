@@ -1,97 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/cadastro.css">
-    <title>FioVital-Cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Fio Vital</title>
+  <link rel="stylesheet" href="../public/css/cadastro.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="form-image">
-            <img src="../public/images/image.png" alt="">
-        </div>
-        <div class="form">
-            <form action="#">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Cadastre-se</h1>
-                    </div>
-                    <div class="login-button">
-                        <button><a href="#">Entrar</a></button>
-                    </div>
-                </div>
+  <div class="container-login">
+    
+    <!-- Painel esquerdo -->
+    <div class="painel-esquerdo">
+      <h1>Fio Vital</h1>
+      <h2>Monitoramento Cardíaco Inteligente</h2>
+      <p>Acesse seu dashboard e mantenha sua saúde cardíaca sempre monitorada</p>
 
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="firstname">Primeiro Nome</label>
-                        <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="lastname">Sobrenome</label>
-                        <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
-                    </div>
-
-
-                    <div class="input-box">
-                        <label for="confirmPassword">Confirme sua Senha</label>
-                        <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
-                    </div>
-
-                </div>
-
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <h6>Gênero</h6>
-                    </div>
-
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Feminino</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Masculino</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Outros</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
-                </div>
-            </form>
-        </div>
+      <ul class="lista-recursos">
+      <li>Monitoramento 24 horas com IA avançada</li>
+      <li>Alertas instantâneos para emergências</li>
+      <li>Dashboard completo para profissionais</li>
+      <li>Segurança e privacidade garantidas</li>
+      <li>Análise preditiva de saúde</li>
+    </ul>
     </div>
-</body>
 
+    <!-- Painel direito -->
+    <div class="painel-direito">
+      <h2>Bem-vindo de volta!</h2>
+      <p>Faça login para acessar sua conta</p>
+
+      <div class="seletor-perfil">
+        <div class="perfil ativo" id="paciente">Paciente</div>
+        <div class="perfil" id="medico">Médico/Cuidador</div>
+      </div>
+
+      <form id="form-login">
+        <input type="email" placeholder="E-mail" required>
+        <div class="campo-senha">
+          <input type="password" placeholder="Senha" id="senha" required>
+          <span id="mostrar-senha">👁️</span>
+        </div>
+
+        <label class="caixa-selecao">
+          <input type="checkbox"> Lembrar de mim
+        </label>
+        <a href="#" class="link-esqueci">Esqueceu a senha?</a>
+
+        <a href="dashboard.html" class="botao">Demo Medico</a>
+        <a href="paciente.html" class="botao">Demo Paciente</a>
+      </form>
+
+      <p class="link-cadastro">Não tem uma conta? <a href="#">Cadastre-se aqui</a></p>
+
+      <div class="separador">Ou entre com</div>
+
+      <div class="botoes-sociais">
+        <button class="social google">Google</button>
+        <button class="social microsoft">Microsoft</button>
+      </div>
+
+      <p class="seguranca">🔒 Seus dados são protegidos com criptografia de ponta a ponta</p>
+    </div>
+  </div>
+
+  <script src="../public/js/cadastro.js"></script>
+</body>
 </html>
