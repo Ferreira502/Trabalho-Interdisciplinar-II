@@ -33,6 +33,11 @@ body {
     align-items: center;
 }
 
+.imagem_logo{
+    width: 120px;
+    height: 100px;
+}
+
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
@@ -62,6 +67,7 @@ body {
     font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
+    font-size: 20px;
 }
 
 .nav-menu a:hover {
@@ -79,11 +85,13 @@ body {
     font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(199, 49, 53, 0.3);
+    
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(199, 49, 53, 0.5);
+    
 }
 
 /*  HERO  */
@@ -385,6 +393,8 @@ body {
     margin-bottom: 2rem;
     opacity: 0.9;
 }
+
+
 
 /* FOOTER  */
 .footer {

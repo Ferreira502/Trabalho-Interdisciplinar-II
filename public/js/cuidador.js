@@ -320,7 +320,7 @@ function salvarPaciente() {
 }
 
 function logout() { 
-    if (confirm('Deseja sair?')) location.href = 'login.html'; 
+    if (confirm('Deseja sair?')) location.href = 'cadastro.html'; 
 }
 
 function centralizarMapa() { 

@@ -5,4 +5,4 @@ function gerarRelatorio() { alert("Gerar relatório..."); }
     function exportarCSV() { alert("Exportando CSV..."); }
     function enviarEmail() { alert("Enviar por e-mail..."); }
     function imprimirRelatorio() { window.print(); }
-    function logout() { if(confirm("Deseja sair?")) location.href="login.html"; }
+    function logout() { if(confirm("Deseja sair?")) location.href="cadastro.html"; }

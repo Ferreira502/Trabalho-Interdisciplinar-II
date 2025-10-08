@@ -17,7 +17,7 @@ header.gc-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #DC143D, #760B20);
+    background: linear-gradient(to right, #b91c1c, #760B20);
     color: #fff;
     padding: 12px 20px;
 }

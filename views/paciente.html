@@ -3,249 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fio Vital - Monitoramento de Pacientes</title>
     <link rel="stylesheet" href="../public/css/paciente.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="../public/images/Logo_minimalista.png" type="image/x-icon">
+    <title>Dashboard - Fio Vital</title>
 </head>
 <body>
-
+    <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">Fio Vital</div>
+            <img class="imagem_logo" src="../public/images/logo_image.png" alt="imagem_logo">
             <div class="user-info">
-                <div class="user-avatar">👨‍⚕️</div>
-                <div>
-                    <div style="font-weight: 600;">Dr. João Santos</div>
-                    <div style="font-size: 0.8rem; opacity: 0.8;">Cardiologista</div>
-                    <button class="logout" onclick="logout()">Sair</button>
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <h3>Maria Silva</h3>
+                    <p>Paciente desde Set/2024</p>
                 </div>
+                <a  href="cadastro.html" class="logout-btn">Sair</a>
             </div>
         </div>
     </header>
-    
-    <div class="container">
-        <main class="dashboard" role="main">
-            <!-- Orientações Médicas -->
-<section class="card medical-guidelines" aria-labelledby="guidelines-title">
-    <h2 id="guidelines-title">
-        <i class="fas fa-bell"></i> Orientações Médicas 
-        <span class="badge">3</span>
-    </h2>
 
-    <!-- Lembrete de Medicamento -->
-    <div class="guideline-item">
-        <h3>Lembrete de Medicamento</h3>
-        <p>Hora de tomar Losartana 50mg. Tome com água, preferencialmente pela manhã.</p>
-        <p class="info"><i class="fas fa-clock"></i> Agora • <span class="doctor">Dr. João Santos</span></p>
-        <div class="actions">
-            <button class="btn btn-success">Tomei</button>
-            <button class="btn btn-secondary">+15min</button>
-        </div>
-    </div>
-
-    <!-- Consulta Agendada -->
-    <div class="guideline-item">
-        <h3>Consulta Agendada</h3>
-        <p>Consulta de acompanhamento marcada para amanhã às 14:00. Lembre-se de levar seus exames.</p>
-        <p class="info"><i class="fas fa-clock"></i> há 2 horas • <span class="doctor">Dr. João Santos</span></p>
-        <div class="actions">
-            <button class="btn btn-success">Confirmar</button>
-            <button class="btn btn-danger">Cancelar</button>
-        </div>
-    </div>
-
-    <!-- Instrução Especial -->
-    <div class="guideline-item">
-        <h3>Instrução Especial</h3>
-        <p>Seus batimentos estão um pouco elevados. Evite esforços físicos intensos hoje e mantenha-se hidratado.</p>
-        <p class="info"><i class="fas fa-clock"></i> há 4 horas • <span class="doctor">Dr. João Santos</span></p>
-        <div class="actions">
-            <button class="btn btn-success">Confirmar</button>
-            <button class="btn btn-danger">Apagar</button>
-        </div>
-    </div>
-</section>
-
-            <!-- Detalhes do Paciente Selecionado -->
-            <section class="card paciente-detail" aria-labelledby="paciente-detail-title">
-                <h2 id="paciente-detail-title">Detalhes do Paciente</h2>
-                
-                <div class="paciente-header">
-                    <div class="paciente-main-info">
-                        <div class="paciente-avatar large">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h3 id="paciente-nome">Maria Silva</h3>
-                            <p id="paciente-info">65 anos • Hipertensão • ID: P-001</p>
-                            <div class="paciente-contato">
-                                <span><i class="fas fa-phone"></i> (11) 99999-9999</span>
-                                <span><i class="fas fa-map-marker-alt"></i> São Paulo, SP</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="paciente-actions">
-                        <button class="btn btn-small" id="edit-paciente">
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="btn btn-small btn-danger" id="emergency-paciente">
-                            <i class="fas fa-ambulance"></i> Emergência
-                        </button>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Current Status -->
+            <div class="status-card">
+                <div class="status-header">
+                    <h2 class="status-title">Status Atual do Coração</h2>
+                    <div class="status-indicator normal">
+                        <span>🟢</span>
+                        Normal
                     </div>
                 </div>
-                
-                <div class="paciente-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="current-bpm">72</span>
-                            <span class="stat-label">BPM Atual</span>
-                        </div>
+                <div class="current-bpm">
+                    <div>
+                        <div class="bpm-value" id="currentBPM">72</div>
+                        <div class="bpm-label">BPM atual</div>
                     </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="avg-bpm">68</span>
-                            <span class="stat-label">Média Diária</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-battery-three-quarters"></i>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="battery-level">85%</span>
-                            <span class="stat-label">Bateria</span>
-                        </div>
+                    <div class="pulse-animation">💗</div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 600; color: #333;">16:42</div>
+                        <div class="bpm-label">Última leitura</div>
                     </div>
                 </div>
-                
-                <div class="heart-rate-chart">
-                    <h3>Monitoramento Cardíaco - Últimas 24h</h3>
-                    <div class="chart-container">
-                        <canvas id="heartRateChart" aria-label="Gráfico de monitoramento cardíaco do paciente" role="img"></canvas>
-                    </div>
-                </div>
-                
-                <div class="paciente-alerts">
-                    <h3>Alertas Recentes</h3>
-                    <div class="alerts-list" id="alerts-container">
-                        <div class="alert-item normal">
-                            <div class="alert-icon" aria-hidden="true">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="alert-content">
-                                <h4>Batimentos Normalizados</h4>
-                                <p>15:30 - Frequência cardíaca retornou ao normal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Informações Médicas -->
-            <section class="card medical-info" aria-labelledby="medical-info-title">
-                <h2 id="medical-info-title">Informações Médicas</h2>
-                
-                <div class="info-section">
-                    <h3><i class="fas fa-pills"></i> Medicações</h3>
-                    <div class="medication-list">
-                        <div class="medication-item">
-                            <span class="med-name">Captopril</span>
-                            <span class="med-dosage">25mg</span>
-                            <span class="med-schedule">8h • 14h • 20h</span>
-                        </div>
-                        <div class="medication-item">
-                            <span class="med-name">AAS</span>
-                            <span class="med-dosage">100mg</span>
-                            <span class="med-schedule">8h</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="info-section">
-                    <h3><i class="fas fa-stethoscope"></i> Condições</h3>
-                    <ul class="conditions-list">
-                        <li>Hipertensão Arterial</li>
-                        <li>Dislipidemia</li>
-                        <li>Obesidade Grau I</li>
-                    </ul>
-                </div>
-                
-                <div class="info-section">
-                    <h3><i class="fas fa-calendar-check"></i> Próxima Consulta</h3>
-                    <div class="appointment-info">
-                        <p><strong>Dr. Carlos Ferreira</strong></p>
-                        <p>15/12/2023 às 14:30</p>
-                        <p>Cardiologia - Hospital São Lucas</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer role="contentinfo">
-            <p>Fio Vital &copy; 2023 - Monitoramento Cardíaco 24/7</p>
-            <div class="footer-info">
-                <span id="connection-status" class="status-online">
-                    <i class="fas fa-circle"></i> Sistema Online
-                </span>
-                <span id="last-update">Última atualização: 16:45</span>
             </div>
-        </footer>
-    </div>
-    
-    <!-- Modal de Emergência -->
-    <div id="emergency-modal" class="modal" role="dialog" aria-labelledby="emergency-modal-title" aria-hidden="true">
-        <div class="modal-content">
-            <h3 id="emergency-modal-title"><i class="fas fa-ambulance"></i> EMERGÊNCIA MÉDICA</h3>
-            <p>Paciente: <span id="emergency-paciente-nome">Maria Silva</span></p>
-            <p>Frequência cardíaca: <span id="emergency-bpm">72</span> BPM</p>
-            <p>Serviço de emergência será acionado em <span id="countdown">10</span> segundos.</p>
-            <div class="modal-actions">
-                <button id="cancel-emergency" class="btn btn-secondary">Cancelar</button>
-                <button id="confirm-emergency" class="btn btn-danger">Confirmar Emergência</button>
+
+            <!-- Heart Rate Chart -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Histórico de Batimentos Cardíacos</h3>
+                    <div class="time-filters">
+                        <button class="time-filter" data-period="1h">1 Hora</button>
+                        <button class="time-filter" data-period="6h">6 Horas</button>
+                        <button class="time-filter active" data-period="24h">24 Horas</button>
+                        <button class="time-filter" data-period="7d">7 Dias</button>
+                        <button class="time-filter" data-period="30d">30 Dias</button>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="heartRateChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">📊</span>
+                    <div class="stat-value">68</div>
+                    <div class="stat-label">BPM Médio (24h)</div>
+                    <div class="stat-change positive">↑ 3 BPM vs. ontem</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">⬆️</span>
+                    <div class="stat-value">95</div>
+                    <div class="stat-label">BPM Máximo</div>
+                    <div class="stat-change">Às 14:30 hoje</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">⬇️</span>
+                    <div class="stat-value">52</div>
+                    <div class="stat-label">BPM Mínimo</div>
+                    <div class="stat-change">Às 03:15 hoje</div>
+                </div>
+                
+                <div class="stat-card">
+                    <span class="stat-icon">⚠️</span>
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Alertas (7 dias)</div>
+                    <div class="stat-change negative">↓ 1 vs. sem. passada</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Device Status -->
+            <div class="sidebar-card">
+                <h3 class="sidebar-title">Status do Dispositivo</h3>
+                <div class="device-status">
+                    <div class="device-icon">⌚</div>
+                    <div class="device-info">
+                        <h4>Fio Vital Monitor</h4>
+                        <p>Modelo FV-001 | Bateria: 85%</p>
+                    </div>
+                    <span class="connection-status connected">Conectado</span>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #666;">
+                    <p>Última sincronização: há 2 minutos</p>
+                    <p>Qualidade do sinal: Excelente</p>
+                </div>
+            </div>
+
+            <!-- Recent Alerts -->
+            <div class="sidebar-card">
+                <h3 class="sidebar-title">Alertas Recentes</h3>
+                
+                <div class="alert-item success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Batimentos Normalizados</h4>
+                        <p>Sua frequência cardíaca voltou ao normal após o exercício</p>
+                        <div class="alert-time">há 1 hora</div>
+                    </div>
+                </div>
+                
+                <div class="alert-item info">
+                    <div class="alert-icon">ℹ️</div>
+                    <div class="alert-content">
+                        <h4>Lembrete de Medicamento</h4>
+                        <p>Hora de tomar seu medicamento cardíaco</p>
+                        <div class="alert-time">há 3 horas</div>
+                    </div>
+                </div>
+                
+                <div class="alert-item warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>BPM Elevado Detectado</h4>
+                        <p>115 BPM detectado. Seu médico foi notificado</p>
+                        <div class="alert-time">Ontem às 14:30</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="sidebar-card">
+                <h3 class="sidebar-title">Ações Rápidas</h3>
+                <div class="quick-actions">
+                    <a href="#" class="action-btn">
+                        <i>📋</i>
+                        <span>Relatórios</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i>👨‍⚕️</i>
+                        <span>Meu Médico</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i>⚙️</i>
+                        <span>Configurações</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i>📞</i>
+                        <span>Emergência</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Modal Adicionar Paciente -->
-    <div id="add-paciente-modal" class="modal" role="dialog" aria-labelledby="add-paciente-title" aria-hidden="true">
-        <div class="modal-content">
-            <h3 id="add-paciente-title"><i class="fas fa-user-plus"></i> Adicionar Novo Paciente</h3>
-            <form id="paciente-form">
-                <div class="form-group">
-                    <label for="paciente-nome-input">Nome Completo</label>
-                    <input type="text" id="paciente-nome-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="paciente-idade">Idade</label>
-                    <input type="number" id="paciente-idade" min="1" max="120" required>
-                </div>
-                <div class="form-group">
-                    <label for="paciente-condicao">Condição Principal</label>
-                    <input type="text" id="paciente-condicao" required>
-                </div>
-                <div class="form-group">
-                    <label for="paciente-telefone">Telefone</label>
-                    <input type="tel" id="paciente-telefone" required>
-                </div>
-            </form>
-            <div class="modal-actions">
-                <button id="cancel-add-paciente" class="btn btn-secondary">Cancelar</button>
-                <button id="save-paciente" class="btn">Salvar Paciente</button>
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="../public/js/paciente.js"></script>
 </body>
 </html>
